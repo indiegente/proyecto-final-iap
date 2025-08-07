@@ -15,6 +15,13 @@ import javax.swing.border.EmptyBorder;
 import utils.Constants;
 import utils.Validator;
 
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+
 /**
  * Ventana principal del sistema de gestión de tienda de celulares Xiaomi.
  * Esta clase integra todas las funcionalidades del sistema en una interfaz
@@ -51,6 +58,42 @@ public class MainWindow extends JFrame {
     
     /** Panel de ayuda */
     private JPanel panelAyuda;
+    
+    // ========================================
+    // COMPONENTES DEL MENÚ
+    // ========================================
+    
+    /** Barra de menú principal */
+    private JMenuBar menuBar;
+    
+    /** Menú Archivo */
+    private JMenu menuArchivo;
+    private JMenuItem menuItemSalir;
+    private JMenuItem menuItemRespaldar;
+    private JMenuItem menuItemRestaurar;
+    
+    /** Menú Mantenimiento */
+    private JMenu menuMantenimiento;
+    private JMenuItem menuItemConsultar;
+    private JMenuItem menuItemModificar;
+    private JMenuItem menuItemListar;
+    
+    /** Menú Ventas */
+    private JMenu menuVentas;
+    private JMenuItem menuItemNuevaVenta;
+    private JMenuItem menuItemHistorial;
+    private JMenuItem menuItemReportes;
+    
+    /** Menú Configuración */
+    private JMenu menuConfiguracion;
+    private JMenuItem menuItemDescuentos;
+    private JMenuItem menuItemObsequios;
+    private JMenuItem menuItemPreferencias;
+    
+    /** Menú Ayuda */
+    private JMenu menuAyuda;
+    private JMenuItem menuItemAcercaDe;
+    private JMenuItem menuItemManual;
     
     // ========================================
     // CONSTRUCTOR Y MÉTODO MAIN
@@ -97,6 +140,9 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null); // Centrar en pantalla
         setResizable(true);
         
+        // Crear y configurar la barra de menú
+        createMenuBar();
+        
         // Panel principal
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -114,6 +160,146 @@ public class MainWindow extends JFrame {
         createVentasTab();
         createConfiguracionTab();
         createAyudaTab();
+    }
+    
+    /**
+     * Crea y configura la barra de menú principal
+     */
+    private void createMenuBar() {
+        menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        
+        // Crear menús
+        createArchivoMenu();
+        createMantenimientoMenu();
+        createVentasMenu();
+        createConfiguracionMenu();
+        createAyudaMenu();
+    }
+    
+    /**
+     * Crea el menú Archivo
+     */
+    private void createArchivoMenu() {
+        menuArchivo = new JMenu("Archivo");
+        menuArchivo.setMnemonic('A');
+        
+        menuItemRespaldar = new JMenuItem("Respaldar Datos", 'R');
+        menuItemRespaldar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+        menuItemRespaldar.addActionListener(e -> handleRespaldarDatos());
+        
+        menuItemRestaurar = new JMenuItem("Restaurar Datos", 'T');
+        menuItemRestaurar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+        menuItemRestaurar.addActionListener(e -> handleRestaurarDatos());
+        
+        menuItemSalir = new JMenuItem("Salir", 'S');
+        menuItemSalir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
+        menuItemSalir.addActionListener(e -> handleWindowClosing());
+        
+        menuArchivo.add(menuItemRespaldar);
+        menuArchivo.add(menuItemRestaurar);
+        menuArchivo.add(new JSeparator());
+        menuArchivo.add(menuItemSalir);
+        
+        menuBar.add(menuArchivo);
+    }
+    
+    /**
+     * Crea el menú Mantenimiento
+     */
+    private void createMantenimientoMenu() {
+        menuMantenimiento = new JMenu("Mantenimiento");
+        menuMantenimiento.setMnemonic('M');
+        
+        menuItemConsultar = new JMenuItem("Consultar Producto", 'C');
+        menuItemConsultar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
+        menuItemConsultar.addActionListener(e -> switchToConsultarTab());
+        
+        menuItemModificar = new JMenuItem("Modificar Producto", 'M');
+        menuItemModificar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0));
+        menuItemModificar.addActionListener(e -> switchToModificarTab());
+        
+        menuItemListar = new JMenuItem("Listar Productos", 'L');
+        menuItemListar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
+        menuItemListar.addActionListener(e -> switchToListarTab());
+        
+        menuMantenimiento.add(menuItemConsultar);
+        menuMantenimiento.add(menuItemModificar);
+        menuMantenimiento.add(menuItemListar);
+        
+        menuBar.add(menuMantenimiento);
+    }
+    
+    /**
+     * Crea el menú Ventas
+     */
+    private void createVentasMenu() {
+        menuVentas = new JMenu("Ventas");
+        menuVentas.setMnemonic('V');
+        
+        menuItemNuevaVenta = new JMenuItem("Nueva Venta", 'N');
+        menuItemNuevaVenta.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0));
+        menuItemNuevaVenta.addActionListener(e -> switchToVentasTab());
+        
+        menuItemHistorial = new JMenuItem("Historial de Ventas", 'H');
+        menuItemHistorial.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+        menuItemHistorial.addActionListener(e -> mostrarHistorialVentas());
+        
+        menuItemReportes = new JMenuItem("Reportes", 'R');
+        menuItemReportes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
+        menuItemReportes.addActionListener(e -> mostrarReportes());
+        
+        menuVentas.add(menuItemNuevaVenta);
+        menuVentas.add(new JSeparator());
+        menuVentas.add(menuItemHistorial);
+        menuVentas.add(menuItemReportes);
+        
+        menuBar.add(menuVentas);
+    }
+    
+    /**
+     * Crea el menú Configuración
+     */
+    private void createConfiguracionMenu() {
+        menuConfiguracion = new JMenu("Configuración");
+        menuConfiguracion.setMnemonic('C');
+        
+        menuItemDescuentos = new JMenuItem("Configurar Descuentos", 'D');
+        menuItemDescuentos.addActionListener(e -> switchToDescuentosTab());
+        
+        menuItemObsequios = new JMenuItem("Configurar Obsequios", 'O');
+        menuItemObsequios.addActionListener(e -> switchToObsequiosTab());
+        
+        menuItemPreferencias = new JMenuItem("Preferencias", 'P');
+        menuItemPreferencias.addActionListener(e -> mostrarPreferencias());
+        
+        menuConfiguracion.add(menuItemDescuentos);
+        menuConfiguracion.add(menuItemObsequios);
+        menuConfiguracion.add(new JSeparator());
+        menuConfiguracion.add(menuItemPreferencias);
+        
+        menuBar.add(menuConfiguracion);
+    }
+    
+    /**
+     * Crea el menú Ayuda
+     */
+    private void createAyudaMenu() {
+        menuAyuda = new JMenu("Ayuda");
+        menuAyuda.setMnemonic('Y');
+        
+        menuItemManual = new JMenuItem("Manual de Usuario", 'M');
+        menuItemManual.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, KeyEvent.SHIFT_DOWN_MASK));
+        menuItemManual.addActionListener(e -> mostrarManualUsuario());
+        
+        menuItemAcercaDe = new JMenuItem("Acerca de...", 'A');
+        menuItemAcercaDe.addActionListener(e -> mostrarAcercaDe());
+        
+        menuAyuda.add(menuItemManual);
+        menuAyuda.add(new JSeparator());
+        menuAyuda.add(menuItemAcercaDe);
+        
+        menuBar.add(menuAyuda);
     }
     
     /**
@@ -410,5 +596,123 @@ public class MainWindow extends JFrame {
      */
     public JPanel getPanelAyuda() {
         return panelAyuda;
+    }
+    
+    // ========================================
+    // MÉTODOS DE NAVEGACIÓN POR MENÚ
+    // ========================================
+    
+    /**
+     * Cambia a la pestaña de consultar productos
+     */
+    private void switchToConsultarTab() {
+        tabbedPane.setSelectedIndex(1); // Pestaña Mantenimiento
+        // Aquí podrías agregar lógica para seleccionar la sub-pestaña Consultar
+        refreshInterface();
+    }
+    
+    /**
+     * Cambia a la pestaña de modificar productos
+     */
+    private void switchToModificarTab() {
+        tabbedPane.setSelectedIndex(1); // Pestaña Mantenimiento
+        // Aquí podrías agregar lógica para seleccionar la sub-pestaña Modificar
+        refreshInterface();
+    }
+    
+    /**
+     * Cambia a la pestaña de listar productos
+     */
+    private void switchToListarTab() {
+        tabbedPane.setSelectedIndex(1); // Pestaña Mantenimiento
+        // Aquí podrías agregar lógica para seleccionar la sub-pestaña Listar
+        refreshInterface();
+    }
+    
+    /**
+     * Cambia a la pestaña de ventas
+     */
+    private void switchToVentasTab() {
+        tabbedPane.setSelectedIndex(2); // Pestaña Ventas
+        refreshInterface();
+    }
+    
+    /**
+     * Cambia a la pestaña de descuentos
+     */
+    private void switchToDescuentosTab() {
+        tabbedPane.setSelectedIndex(3); // Pestaña Configuración
+        // Aquí podrías agregar lógica para seleccionar la sub-pestaña Descuentos
+        refreshInterface();
+    }
+    
+    /**
+     * Cambia a la pestaña de obsequios
+     */
+    private void switchToObsequiosTab() {
+        tabbedPane.setSelectedIndex(3); // Pestaña Configuración
+        // Aquí podrías agregar lógica para seleccionar la sub-pestaña Obsequios
+        refreshInterface();
+    }
+    
+    // ========================================
+    // MÉTODOS DE ACCIÓN DEL MENÚ
+    // ========================================
+    
+    /**
+     * Maneja la acción de respaldar datos
+     */
+    private void handleRespaldarDatos() {
+        // Aquí implementarías la lógica para respaldar datos
+        // Podrías usar un JDialog para mostrar progreso
+        System.out.println("Respaldando datos...");
+    }
+    
+    /**
+     * Maneja la acción de restaurar datos
+     */
+    private void handleRestaurarDatos() {
+        // Aquí implementarías la lógica para restaurar datos
+        System.out.println("Restaurando datos...");
+    }
+    
+    /**
+     * Muestra el historial de ventas
+     */
+    private void mostrarHistorialVentas() {
+        // Aquí podrías abrir un JDialog con el historial
+        System.out.println("Mostrando historial de ventas...");
+    }
+    
+    /**
+     * Muestra los reportes
+     */
+    private void mostrarReportes() {
+        // Aquí podrías abrir un JDialog con los reportes
+        System.out.println("Mostrando reportes...");
+    }
+    
+    /**
+     * Muestra las preferencias
+     */
+    private void mostrarPreferencias() {
+        // Aquí podrías abrir un JDialog con las preferencias
+        System.out.println("Mostrando preferencias...");
+    }
+    
+    /**
+     * Muestra el manual de usuario
+     */
+    private void mostrarManualUsuario() {
+        // Aquí podrías abrir un JDialog con el manual
+        System.out.println("Mostrando manual de usuario...");
+    }
+    
+    /**
+     * Muestra la información "Acerca de"
+     */
+    private void mostrarAcercaDe() {
+        // Aquí podrías abrir un JDialog con la información
+        System.out.println("Mostrando información del sistema...");
     }
 }
