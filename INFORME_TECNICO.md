@@ -11,10 +11,9 @@
 Jorge Bastidas
 
 **INTEGRANTES DEL GRUPO:**  
-- Alfredo Condori  
+- Jorge Enrique Bastidas Ureta
 - Ever García  
-- Fiorela Quispe  
-- Jorge Bastidas
+- Fiorela Quispe
 
 ---
 
@@ -112,72 +111,71 @@ El sistema presenta una arquitectura basada en ventana principal con JMenuBar qu
 - Salir: Cierre controlado del sistema
 
 **Mantenimiento** 
-- Consultar refrigeradora: Visualización de especificaciones técnicas
-- Modificar refrigeradora: Edición de datos de productos
-- Listar refrigeradoras: Reporte completo del inventario
+- Consultar celular: Visualización de especificaciones técnicas
+![Consultar](./docs/img/consultar.jpg)
+
+- Modificar celular: Edición de datos de productos
+![Modificar](./docs/img/modificar.jpg)
+- Listar celulares: Reporte completo del inventario
+![Listar](./docs/img/listar.jpg)
 
 **Ventas**
 - Vender: Procesamiento de transacciones comerciales
-
+![Ventas](./docs/img/vender.jpg)
 **Configuración**
 - Configurar descuentos: Personalización de porcentajes por volumen
+![Configurar Descuentos](./docs/img/descuentos.jpg)
 - Configurar obsequios: Definición de catálogo de regalos
+![Configurar Obsequios](./docs/img/obsequios.jpg)
 
 **Ayuda**
 - Acerca de Tienda: Información del sistema y autores
+![Ayuda](./docs/img/ayuda.jpg)
 
 #### Funcionalidades Detalladas
 
-**1. Consultar Producto**
+**1. Consultar Celular**
 
-![Consultar Refrigeradora](./docs/img/consultar.png)
-
-La funcionalidad permite visualizar especificaciones técnicas de productos mediante:
-- ComboBox para selección de modelo
-- Campos de texto no editables mostrando precio, dimensiones
+La funcionalidad permite visualizar especificaciones técnicas de celulares mediante:
+- ComboBox para selección de modelo de celular Xiaomi
+- Campos de texto no editables mostrando precio, RAM, almacenamiento
 - Carga automática de datos al cambiar selección
 - Botón "Cerrar" para retorno al menú principal
 
-**2. Modificar Producto**
-
-![Modificar Refrigeradora](./docs/img/modificar.png)
+**2. Modificar Celular**
 
 Módulo de edición con características:
-- Campos editables para modificación de especificaciones
-- Validaciones en tiempo real de datos ingresados
+- Campos editables para modificación de especificaciones técnicas
+- Validaciones en tiempo real de datos ingresados (precio, RAM, ROM)
 - Botón "Guardar" que persiste cambios en variables globales
 - Botón "Cerrar" sin guardar cambios
 
-**3. Listar Productos**
-
-![Listado de Refrigeradoras](./docs/img/listar.png)
+**3. Listar Celulares**
 
 Generación de reporte completo incluyendo:
-- Visualización de todos los productos del inventario
-- Formato estructurado con todas las especificaciones
+- Visualización de todos los celulares del inventario
+- Formato estructurado con modelo, precio, RAM y almacenamiento
 - Área de texto con scroll para navegación
 - Funcionalidad "Listar" para actualización de datos
 
 **4. Sistema de Ventas**
 
-![Vender](./docs/img/vender.png)
-
 Procesamiento de transacciones con:
-- Selección de producto y cantidad
+- Selección de modelo de celular y cantidad
 - Cálculo automático de descuentos según volumen:
   - 1-5 unidades: 7.5%
   - 6-10 unidades: 10.0%
   - 11-15 unidades: 12.5%
   - Más de 15 unidades: 15.0%
 - Asignación automática de obsequios:
-  - 1 unidad: Funda
+  - 1 unidad: Funda para celular
   - 2-5 unidades: Protector de pantalla
   - Más de 5 unidades: Audífonos
 - Generación de boleta detallada con todos los cálculos
 
 **5. Configuración de Descuentos**
 
-![Configurar Descuentos](./docs/img/descuentos.png)
+![Configurar Descuentos](./docs/img/descuentos.jpg)
 
 Panel de configuración comercial con:
 - Campos editables para cada rango de cantidad
@@ -187,7 +185,7 @@ Panel de configuración comercial con:
 
 **6. Configuración de Obsequios**
 
-![Configurar Obsequios](./docs/img/obsequios.png)
+![Configurar Obsequios](./docs/img/obsequios.jpg)
 
 Personalización de catálogo de regalos:
 - Campos de texto para definir obsequios por rango
@@ -197,7 +195,7 @@ Personalización de catálogo de regalos:
 
 **7. Alertas de Progreso**
 
-![Avance de Ventas](./docs/img/alerta.png)
+![Avance de Ventas](./docs/img/alerta.jpg)
 
 Sistema de notificaciones cada 5 ventas mostrando:
 - Número de venta actual
@@ -210,12 +208,12 @@ Sistema de notificaciones cada 5 ventas mostrando:
 El sistema incluye validaciones robustas:
 
 **Validaciones de Entrada:**
-- Campos numéricos: Verificación de rangos válidos (precios, dimensiones)
+- Campos numéricos: Verificación de rangos válidos (precios S/600-S/1200, RAM, ROM)
 - Campos de texto: Validación de longitud máxima y caracteres permitidos
 - Cantidades: Control de stock y límites comerciales
 
 **Validaciones de Negocio:**
-- Verificación de producto seleccionado antes de venta
+- Verificación de modelo de celular seleccionado antes de venta
 - Confirmación de cambios en configuraciones críticas
 - Control de coherencia en descuentos y obsequios
 
