@@ -48,10 +48,10 @@ if [ $? -eq 0 ]; then
     if [[ $REPLY =~ ^[Ss]$ ]]; then
         echo "🚀 Ejecutando la aplicación..."
         echo ""
-        java -cp bin gui.MainWindow
+        java -cp bin proyectitointerfaces.Tienda
     else
         echo "👋 Compilación completada. Para ejecutar manualmente use:"
-        echo "   java -cp bin gui.MainWindow"
+        echo "   java -cp bin proyectitointerfaces.Tienda"
     fi
 else
     echo "❌ Error en la compilación. Revise los errores arriba."

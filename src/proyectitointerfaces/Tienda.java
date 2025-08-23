@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 // Importa todos los JDialogs
 import gui.dialogs.DialogConsultarProducto;
-import gui.dialogs.DialogModificarProducto;
+import gui.dialogs.DialogModificarCelular;
 import gui.dialogs.DialogListarProductos;
 import gui.dialogs.DialogNuevaVenta;
 import gui.dialogs.DialogDescuentos;
@@ -102,7 +102,7 @@ public class Tienda extends JFrame {
         menuMantenimiento.add(menuItemModificar);
         menuItemModificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new DialogModificarProducto(Tienda.this).setVisible(true);
+                new DialogModificarCelular(Tienda.this).setVisible(true);
             }
         });
 
