@@ -76,8 +76,8 @@ public class DialogListarProductos extends JDialog {
         reporte.append("                        GAMA MEDIA-BAJA\n");
         reporte.append("═══════════════════════════════════════════════════════════════════════════════\n\n");
         
-        reporte.append(String.format("%-4s %-10s %-15s %-12s %-8s %-15s\n", 
-            "Nº", "MARCA", "MODELO", "PRECIO", "RAM", "ALMACENAMIENTO"));
+        reporte.append(String.format("%-4s %-10s %-15s %-12s %-8s %-15s %-8s\n", 
+            "Nº", "MARCA", "MODELO", "PRECIO", "RAM", "ALMACENAMIENTO", "STOCK"));
         reporte.append("───────────────────────────────────────────────────────────────────────────────\n");
         
         for (int i = 0; i < Constants.TOTAL_MODELOS; i++) {
@@ -87,9 +87,10 @@ public class DialogListarProductos extends JDialog {
             String precio = Constants.MONEDA + " " + String.format("%.2f", Constants.obtenerPrecio(i));
             String ram = Constants.obtenerRAM(i);
             String almacenamiento = Constants.obtenerAlmacenamiento(i);
+            String stock = String.valueOf(Constants.obtenerStock(i));
             
-            reporte.append(String.format("%-4s %-10s %-15s %-12s %-8s %-15s\n",
-                numero, marca, modelo, precio, ram, almacenamiento));
+            reporte.append(String.format("%-4s %-10s %-15s %-12s %-8s %-15s %-8s\n",
+                numero, marca, modelo, precio, ram, almacenamiento, stock));
         }
         
         reporte.append("───────────────────────────────────────────────────────────────────────────────\n\n");

@@ -95,6 +95,7 @@ public class Constants {
     public static double CELULAR_1_PRECIO = 650.0;
     public static String CELULAR_1_RAM = "4 GB";
     public static String CELULAR_1_ALMACENAMIENTO = "128 GB";
+    public static int CELULAR_1_STOCK = 10;
     
     // Modelo 2: Redmi 12C (modificables)
     public static String CELULAR_2_MARCA = "Xiaomi";
@@ -102,6 +103,7 @@ public class Constants {
     public static double CELULAR_2_PRECIO = 780.0;
     public static String CELULAR_2_RAM = "4 GB";
     public static String CELULAR_2_ALMACENAMIENTO = "128 GB";
+    public static int CELULAR_2_STOCK = 5;
     
     // Modelo 3: Redmi Note 12 (modificables)
     public static String CELULAR_3_MARCA = "Xiaomi";
@@ -109,6 +111,7 @@ public class Constants {
     public static double CELULAR_3_PRECIO = 950.0;
     public static String CELULAR_3_RAM = "6 GB";
     public static String CELULAR_3_ALMACENAMIENTO = "128 GB";
+    public static int CELULAR_3_STOCK = 3;
     
     // Modelo 4: Redmi Note 13 (modificables)
     public static String CELULAR_4_MARCA = "Xiaomi";
@@ -116,6 +119,7 @@ public class Constants {
     public static double CELULAR_4_PRECIO = 1150.0;
     public static String CELULAR_4_RAM = "8 GB";
     public static String CELULAR_4_ALMACENAMIENTO = "256 GB";
+    public static int CELULAR_4_STOCK = 1;
     
     // ========================================
     // CONSTANTES PARA CANTIDAD DE MODELOS
@@ -224,6 +228,13 @@ public class Constants {
         OBSEQUIO_2_A_5 = obsequio2a5;
         OBSEQUIO_6_MAS = obsequio6Mas;
     }
+    // * Actualiza los stock por cantidad
+    public static void actualizarStocks(int s1, int s2, int s3, int s4) {
+		CELULAR_1_STOCK = s1;
+		CELULAR_2_STOCK = s2;
+		CELULAR_3_STOCK = s3;
+		CELULAR_4_STOCK = s4;
+		}
     
     // ========================================
     // MÉTODOS PARA ACCESO A DATOS DE CELULARES (SIN ARREGLOS)
@@ -305,6 +316,21 @@ public class Constants {
     }
     
     /**
+     * Obtiene el stock de un celular por índice
+     * @param indice Índice del celular (0-3)
+     * @return sTOCK del celular
+     */
+    public static int obtenerStock(int indice) {
+        switch (indice) {
+            case 0: return CELULAR_1_STOCK;
+            case 1: return CELULAR_2_STOCK;
+            case 2: return CELULAR_3_STOCK;
+            case 3: return CELULAR_4_STOCK;
+            default: return 0;
+        }
+    }
+    
+    /**
      * Actualiza los datos de un celular específico
      * @param indice Índice del celular (0-3)
      * @param marca Nueva marca
@@ -314,7 +340,7 @@ public class Constants {
      * @param almacenamiento Nuevo almacenamiento (con "GB" incluido)
      */
     public static void actualizarCelular(int indice, String marca, String modelo, 
-                                        double precio, String ram, String almacenamiento) {
+                                        double precio, String ram, String almacenamiento, int stock) {
         switch (indice) {
             case 0:
                 CELULAR_1_MARCA = marca;
@@ -322,6 +348,7 @@ public class Constants {
                 CELULAR_1_PRECIO = precio;
                 CELULAR_1_RAM = ram;
                 CELULAR_1_ALMACENAMIENTO = almacenamiento;
+                CELULAR_1_STOCK = stock;
                 break;
             case 1:
                 CELULAR_2_MARCA = marca;
@@ -329,6 +356,7 @@ public class Constants {
                 CELULAR_2_PRECIO = precio;
                 CELULAR_2_RAM = ram;
                 CELULAR_2_ALMACENAMIENTO = almacenamiento;
+                CELULAR_2_STOCK = stock;
                 break;
             case 2:
                 CELULAR_3_MARCA = marca;
@@ -336,6 +364,7 @@ public class Constants {
                 CELULAR_3_PRECIO = precio;
                 CELULAR_3_RAM = ram;
                 CELULAR_3_ALMACENAMIENTO = almacenamiento;
+                CELULAR_3_STOCK = stock;
                 break;
             case 3:
                 CELULAR_4_MARCA = marca;
@@ -343,6 +372,7 @@ public class Constants {
                 CELULAR_4_PRECIO = precio;
                 CELULAR_4_RAM = ram;
                 CELULAR_4_ALMACENAMIENTO = almacenamiento;
+                CELULAR_4_STOCK = stock;
                 break;
         }
     }

@@ -73,7 +73,7 @@ public class DialogDescuentos extends JDialog {
         lblPorciento3.setBounds(290, 120, 20, 25);
         add(lblPorciento3);
 
-        JLabel lblMas15 = new JLabel("Más de 15 unidades");
+        JLabel lblMas15 = new JLabel("MÃ¡s de 15 unidades");
         lblMas15.setBounds(30, 160, 120, 25);
         lblMas15.setFont(new Font("Tahoma", Font.PLAIN, 12));
         add(lblMas15);
@@ -138,14 +138,14 @@ public class DialogDescuentos extends JDialog {
             
             JOptionPane.showMessageDialog(this, 
                 "Los porcentajes de descuento han sido actualizados exitosamente.", 
-                "Configuración Guardada", 
+                "ConfiguraciÃ³n Guardada", 
                 JOptionPane.INFORMATION_MESSAGE);
             
             dispose();
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, 
-                "Error: Todos los campos deben contener valores numéricos válidos.", 
+                "Error: Todos los campos deben contener valores numÃ©ricos vÃ¡lidos.", 
                 "Error de Formato", 
                 JOptionPane.ERROR_MESSAGE);
         }
@@ -163,7 +163,7 @@ public class DialogDescuentos extends JDialog {
             "1 a 5 unidades",
             "6 a 10 unidades", 
             "11 a 15 unidades",
-            "Más de 15 unidades"
+            "MÃ¡s de 15 unidades"
         };
         
         for (int i = 0; i < campos.length; i++) {
@@ -197,15 +197,15 @@ public class DialogDescuentos extends JDialog {
         }
         
         if (p4 < 0 || p4 > 50) {
-            mostrarErrorRango("Más de 15 unidades", 0, 50);
+            mostrarErrorRango("MÃ¡s de 15 unidades", 0, 50);
             return false;
         }
         
         if (!(p1 <= p2 && p2 <= p3 && p3 <= p4)) {
             JOptionPane.showMessageDialog(this, 
                 "Los porcentajes de descuento deben ser progresivos:\n" +
-                "1-5 unidades ≤ 6-10 unidades ≤ 11-15 unidades ≤ Más de 15 unidades", 
-                "Error de Validación", 
+                "1-5 unidades â‰¤ 6-10 unidades â‰¤ 11-15 unidades â‰¤ MÃ¡s de 15 unidades", 
+                "Error de ValidaciÃ³n", 
                 JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -217,7 +217,7 @@ public class DialogDescuentos extends JDialog {
         JOptionPane.showMessageDialog(this, 
             String.format("El porcentaje para '%s' debe estar entre %.1f%% y %.1f%%", 
                 campo, min, max), 
-            "Error de Validación", 
+            "Error de ValidaciÃ³n", 
             JOptionPane.ERROR_MESSAGE);
     }
     

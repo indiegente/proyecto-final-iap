@@ -15,6 +15,7 @@ import gui.dialogs.DialogListarProductos;
 import gui.dialogs.DialogNuevaVenta;
 import gui.dialogs.DialogDescuentos;
 import gui.dialogs.DialogObsequios;
+import gui.dialogs.DialogStocks;
 import gui.dialogs.DialogAcercaDe;
 
 /**
@@ -126,6 +127,14 @@ public class Tienda extends JFrame {
 
         JMenuItem menuItemObsequios = new JMenuItem("Configurar Obsequios");
         menuConfiguracion.add(menuItemObsequios);
+        
+        JMenuItem mntmNewMenuItem = new JMenuItem("Configurar stocks");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		new DialogStocks(Tienda.this).setVisible(true);
+        	}
+        });
+        menuConfiguracion.add(mntmNewMenuItem);
         menuItemObsequios.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new DialogObsequios(Tienda.this).setVisible(true);

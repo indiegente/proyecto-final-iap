@@ -89,6 +89,7 @@ public class Validator {
      * @return La cantidad como int si es válida, -1 si no lo es
      */
     public static int validarCantidadString(String cantidadStr) {
+    	
         try {
             int cantidad = Integer.parseInt(cantidadStr);
             if (validarCantidad(cantidad)) {
@@ -118,6 +119,24 @@ public class Validator {
                 return -1;
             }
             return porcentaje;
+        } catch (NumberFormatException e) {
+            mostrarError("El porcentaje debe ser un número válido");
+            return -1;
+        }
+    }
+    /**
+     * Valida que stock  sea válido
+     * @param stockStr Stock como string
+     * @return El stock como int si es válido, -1 si no lo es
+     */
+    public static int validarStock(int stock) {
+        try {
+            
+            if (stock < 0 ) {
+                mostrarError("El stock debe ser mayor que 0");
+                return -1;
+            }
+            return stock;
         } catch (NumberFormatException e) {
             mostrarError("El porcentaje debe ser un número válido");
             return -1;
