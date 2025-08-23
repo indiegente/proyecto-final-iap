@@ -64,8 +64,6 @@ public class Tienda extends JFrame {
         tabbedPane.setBounds(10, 10, ANCHO_VENTANA - 40, ALTO_VENTANA - 80);
         contentPane.add(tabbedPane);
 
-        // Crear todas las pestañas
-        // crearPestanas();
     }
 
     // Método para crear la barra de menú y sus opciones

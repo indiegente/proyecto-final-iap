@@ -127,6 +127,59 @@ public class Constants {
     public static final String FORMATO_FECHA = "dd/MM/yyyy HH:mm:ss";
     
     // ========================================
+    // CONSTANTES DE CELULARES - GAMA MEDIA-BAJA
+    // ========================================
+    
+    // Modelo 1: Redmi A3
+    public static final String CELULAR_1_MARCA = "Xiaomi";
+    public static final String CELULAR_1_MODELO = "Redmi A3";
+    public static final double CELULAR_1_PRECIO = 650.0;
+    public static final String CELULAR_1_RAM = "4 GB";
+    public static final String CELULAR_1_ALMACENAMIENTO = "128 GB";
+    
+    // Modelo 2: Redmi 12C
+    public static final String CELULAR_2_MARCA = "Xiaomi";
+    public static final String CELULAR_2_MODELO = "Redmi 12C";
+    public static final double CELULAR_2_PRECIO = 780.0;
+    public static final String CELULAR_2_RAM = "4 GB";
+    public static final String CELULAR_2_ALMACENAMIENTO = "128 GB";
+    
+    // Modelo 3: Redmi Note 12
+    public static final String CELULAR_3_MARCA = "Xiaomi";
+    public static final String CELULAR_3_MODELO = "Redmi Note 12";
+    public static final double CELULAR_3_PRECIO = 950.0;
+    public static final String CELULAR_3_RAM = "6 GB";
+    public static final String CELULAR_3_ALMACENAMIENTO = "128 GB";
+    
+    // Modelo 4: Redmi Note 13
+    public static final String CELULAR_4_MARCA = "Xiaomi";
+    public static final String CELULAR_4_MODELO = "Redmi Note 13";
+    public static final double CELULAR_4_PRECIO = 1150.0;
+    public static final String CELULAR_4_RAM = "8 GB";
+    public static final String CELULAR_4_ALMACENAMIENTO = "256 GB";
+    
+    // Arreglos para facilitar el manejo de los celulares
+    public static final String[] CELULARES_MODELOS = {
+        CELULAR_1_MODELO, CELULAR_2_MODELO, CELULAR_3_MODELO, CELULAR_4_MODELO
+    };
+    
+    public static final String[] CELULARES_MARCAS = {
+        CELULAR_1_MARCA, CELULAR_2_MARCA, CELULAR_3_MARCA, CELULAR_4_MARCA
+    };
+    
+    public static final double[] CELULARES_PRECIOS = {
+        CELULAR_1_PRECIO, CELULAR_2_PRECIO, CELULAR_3_PRECIO, CELULAR_4_PRECIO
+    };
+    
+    public static final String[] CELULARES_RAM = {
+        CELULAR_1_RAM, CELULAR_2_RAM, CELULAR_3_RAM, CELULAR_4_RAM
+    };
+    
+    public static final String[] CELULARES_ALMACENAMIENTO = {
+        CELULAR_1_ALMACENAMIENTO, CELULAR_2_ALMACENAMIENTO, CELULAR_3_ALMACENAMIENTO, CELULAR_4_ALMACENAMIENTO
+    };
+
+    // ========================================
     // CONSTANTES DE AUTORES
     // ========================================
     
