@@ -23,7 +23,12 @@ public class DialogConsultarProducto extends JDialog {
         lblSeleccionar.setBounds(30, 30, 120, 25);
         add(lblSeleccionar);
 
-        cboModelo = new JComboBox<>(Constants.CELULARES_MODELOS);
+        cboModelo = new JComboBox<>();
+        // Agregamos los modelos individualmente sin usar arreglos
+        cboModelo.addItem(Constants.obtenerModelo(0));
+        cboModelo.addItem(Constants.obtenerModelo(1));
+        cboModelo.addItem(Constants.obtenerModelo(2));
+        cboModelo.addItem(Constants.obtenerModelo(3));
         cboModelo.setBounds(160, 30, 200, 25);
         add(cboModelo);
 
@@ -45,7 +50,7 @@ public class DialogConsultarProducto extends JDialog {
         txtModelo.setEditable(false);
         add(txtModelo);
 
-        JLabel lblPrecio = new JLabel("Precio:");
+        JLabel lblPrecio = new JLabel("Precio (S/):");
         lblPrecio.setBounds(30, 130, 80, 25);
         add(lblPrecio);
 
@@ -54,7 +59,7 @@ public class DialogConsultarProducto extends JDialog {
         txtPrecio.setEditable(false);
         add(txtPrecio);
 
-        JLabel lblRAM = new JLabel("RAM:");
+        JLabel lblRAM = new JLabel("RAM (GB):");
         lblRAM.setBounds(30, 160, 80, 25);
         add(lblRAM);
 
@@ -63,8 +68,8 @@ public class DialogConsultarProducto extends JDialog {
         txtRAM.setEditable(false);
         add(txtRAM);
 
-        JLabel lblAlmacenamiento = new JLabel("Almacenamiento:");
-        lblAlmacenamiento.setBounds(30, 190, 120, 25);
+        JLabel lblAlmacenamiento = new JLabel("Almacenamiento (GB):");
+        lblAlmacenamiento.setBounds(30, 190, 130, 25);
         add(lblAlmacenamiento);
 
         txtAlmacenamiento = new JTextField();
@@ -98,10 +103,10 @@ public class DialogConsultarProducto extends JDialog {
     private void actualizarDatos() {
         int indice = cboModelo.getSelectedIndex();
         
-        txtMarca.setText(Constants.CELULARES_MARCAS[indice]);
-        txtModelo.setText(Constants.CELULARES_MODELOS[indice]);
-        txtPrecio.setText(Constants.MONEDA + " " + Constants.CELULARES_PRECIOS[indice]);
-        txtRAM.setText(Constants.CELULARES_RAM[indice]);
-        txtAlmacenamiento.setText(Constants.CELULARES_ALMACENAMIENTO[indice]);
+        txtMarca.setText(Constants.obtenerMarca(indice));
+        txtModelo.setText(Constants.obtenerModelo(indice));
+        txtPrecio.setText(Constants.MONEDA + " " + Constants.obtenerPrecio(indice));
+        txtRAM.setText(Constants.obtenerRAM(indice));
+        txtAlmacenamiento.setText(Constants.obtenerAlmacenamiento(indice));
     }
 }

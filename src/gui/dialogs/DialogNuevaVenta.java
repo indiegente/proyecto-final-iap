@@ -42,7 +42,12 @@ public class DialogNuevaVenta extends JDialog {
         lblModelo.setBounds(30, 30, 80, 25);
         add(lblModelo);
 
-        cboModelo = new JComboBox<>(Constants.CELULARES_MODELOS);
+        cboModelo = new JComboBox<>();
+        // Agregamos los modelos individualmente sin usar arreglos
+        cboModelo.addItem(Constants.obtenerModelo(0));
+        cboModelo.addItem(Constants.obtenerModelo(1));
+        cboModelo.addItem(Constants.obtenerModelo(2));
+        cboModelo.addItem(Constants.obtenerModelo(3));
         cboModelo.setBounds(120, 30, 200, 25);
         add(cboModelo);
 
@@ -111,7 +116,7 @@ public class DialogNuevaVenta extends JDialog {
     
     private void actualizarPrecio() {
         int indice = cboModelo.getSelectedIndex();
-        double precio = Constants.CELULARES_PRECIOS[indice];
+        double precio = Constants.obtenerPrecio(indice);
         txtPrecio.setText(formatoMoneda.format(precio));
     }
     
@@ -123,8 +128,8 @@ public class DialogNuevaVenta extends JDialog {
         int indiceModelo = cboModelo.getSelectedIndex();
         int cantidad = Integer.parseInt(txtCantidad.getText().trim());
         
-        String modelo = Constants.CELULARES_MODELOS[indiceModelo];
-        double precioUnitario = Constants.CELULARES_PRECIOS[indiceModelo];
+        String modelo = Constants.obtenerModelo(indiceModelo);
+        double precioUnitario = Constants.obtenerPrecio(indiceModelo);
         
         double importeCompra = precioUnitario * cantidad;
         double porcentajeDescuento = Constants.obtenerDescuento(cantidad);

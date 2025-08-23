@@ -130,54 +130,40 @@ public class Constants {
     // CONSTANTES DE CELULARES - GAMA MEDIA-BAJA
     // ========================================
     
-    // Modelo 1: Redmi A3
-    public static final String CELULAR_1_MARCA = "Xiaomi";
-    public static final String CELULAR_1_MODELO = "Redmi A3";
-    public static final double CELULAR_1_PRECIO = 650.0;
-    public static final String CELULAR_1_RAM = "4 GB";
-    public static final String CELULAR_1_ALMACENAMIENTO = "128 GB";
+    // Modelo 1: Redmi A3 (modificables)
+    public static String CELULAR_1_MARCA = "Xiaomi";
+    public static String CELULAR_1_MODELO = "Redmi A3";
+    public static double CELULAR_1_PRECIO = 650.0;
+    public static String CELULAR_1_RAM = "4 GB";
+    public static String CELULAR_1_ALMACENAMIENTO = "128 GB";
     
-    // Modelo 2: Redmi 12C
-    public static final String CELULAR_2_MARCA = "Xiaomi";
-    public static final String CELULAR_2_MODELO = "Redmi 12C";
-    public static final double CELULAR_2_PRECIO = 780.0;
-    public static final String CELULAR_2_RAM = "4 GB";
-    public static final String CELULAR_2_ALMACENAMIENTO = "128 GB";
+    // Modelo 2: Redmi 12C (modificables)
+    public static String CELULAR_2_MARCA = "Xiaomi";
+    public static String CELULAR_2_MODELO = "Redmi 12C";
+    public static double CELULAR_2_PRECIO = 780.0;
+    public static String CELULAR_2_RAM = "4 GB";
+    public static String CELULAR_2_ALMACENAMIENTO = "128 GB";
     
-    // Modelo 3: Redmi Note 12
-    public static final String CELULAR_3_MARCA = "Xiaomi";
-    public static final String CELULAR_3_MODELO = "Redmi Note 12";
-    public static final double CELULAR_3_PRECIO = 950.0;
-    public static final String CELULAR_3_RAM = "6 GB";
-    public static final String CELULAR_3_ALMACENAMIENTO = "128 GB";
+    // Modelo 3: Redmi Note 12 (modificables)
+    public static String CELULAR_3_MARCA = "Xiaomi";
+    public static String CELULAR_3_MODELO = "Redmi Note 12";
+    public static double CELULAR_3_PRECIO = 950.0;
+    public static String CELULAR_3_RAM = "6 GB";
+    public static String CELULAR_3_ALMACENAMIENTO = "128 GB";
     
-    // Modelo 4: Redmi Note 13
-    public static final String CELULAR_4_MARCA = "Xiaomi";
-    public static final String CELULAR_4_MODELO = "Redmi Note 13";
-    public static final double CELULAR_4_PRECIO = 1150.0;
-    public static final String CELULAR_4_RAM = "8 GB";
-    public static final String CELULAR_4_ALMACENAMIENTO = "256 GB";
+    // Modelo 4: Redmi Note 13 (modificables)
+    public static String CELULAR_4_MARCA = "Xiaomi";
+    public static String CELULAR_4_MODELO = "Redmi Note 13";
+    public static double CELULAR_4_PRECIO = 1150.0;
+    public static String CELULAR_4_RAM = "8 GB";
+    public static String CELULAR_4_ALMACENAMIENTO = "256 GB";
     
-    // Arreglos para facilitar el manejo de los celulares
-    public static final String[] CELULARES_MODELOS = {
-        CELULAR_1_MODELO, CELULAR_2_MODELO, CELULAR_3_MODELO, CELULAR_4_MODELO
-    };
+    // ========================================
+    // CONSTANTES PARA CANTIDAD DE MODELOS
+    // ========================================
     
-    public static final String[] CELULARES_MARCAS = {
-        CELULAR_1_MARCA, CELULAR_2_MARCA, CELULAR_3_MARCA, CELULAR_4_MARCA
-    };
-    
-    public static final double[] CELULARES_PRECIOS = {
-        CELULAR_1_PRECIO, CELULAR_2_PRECIO, CELULAR_3_PRECIO, CELULAR_4_PRECIO
-    };
-    
-    public static final String[] CELULARES_RAM = {
-        CELULAR_1_RAM, CELULAR_2_RAM, CELULAR_3_RAM, CELULAR_4_RAM
-    };
-    
-    public static final String[] CELULARES_ALMACENAMIENTO = {
-        CELULAR_1_ALMACENAMIENTO, CELULAR_2_ALMACENAMIENTO, CELULAR_3_ALMACENAMIENTO, CELULAR_4_ALMACENAMIENTO
-    };
+    /** Número total de modelos de celulares disponibles */
+    public static final int TOTAL_MODELOS = 4;
 
     // ========================================
     // CONSTANTES DE AUTORES
@@ -286,5 +272,127 @@ public class Constants {
         OBSEQUIO_1_UNIDAD = obsequio1;
         OBSEQUIO_2_A_5 = obsequio2a5;
         OBSEQUIO_6_MAS = obsequio6Mas;
+    }
+    
+    // ========================================
+    // MÉTODOS PARA ACCESO A DATOS DE CELULARES (SIN ARREGLOS)
+    // ========================================
+    
+    /**
+     * Obtiene la marca de un celular por índice
+     * @param indice Índice del celular (0-3)
+     * @return Marca del celular
+     */
+    public static String obtenerMarca(int indice) {
+        switch (indice) {
+            case 0: return CELULAR_1_MARCA;
+            case 1: return CELULAR_2_MARCA;
+            case 2: return CELULAR_3_MARCA;
+            case 3: return CELULAR_4_MARCA;
+            default: return "";
+        }
+    }
+    
+    /**
+     * Obtiene el modelo de un celular por índice
+     * @param indice Índice del celular (0-3)
+     * @return Modelo del celular
+     */
+    public static String obtenerModelo(int indice) {
+        switch (indice) {
+            case 0: return CELULAR_1_MODELO;
+            case 1: return CELULAR_2_MODELO;
+            case 2: return CELULAR_3_MODELO;
+            case 3: return CELULAR_4_MODELO;
+            default: return "";
+        }
+    }
+    
+    /**
+     * Obtiene el precio de un celular por índice
+     * @param indice Índice del celular (0-3)
+     * @return Precio del celular
+     */
+    public static double obtenerPrecio(int indice) {
+        switch (indice) {
+            case 0: return CELULAR_1_PRECIO;
+            case 1: return CELULAR_2_PRECIO;
+            case 2: return CELULAR_3_PRECIO;
+            case 3: return CELULAR_4_PRECIO;
+            default: return 0.0;
+        }
+    }
+    
+    /**
+     * Obtiene la RAM de un celular por índice
+     * @param indice Índice del celular (0-3)
+     * @return RAM del celular
+     */
+    public static String obtenerRAM(int indice) {
+        switch (indice) {
+            case 0: return CELULAR_1_RAM;
+            case 1: return CELULAR_2_RAM;
+            case 2: return CELULAR_3_RAM;
+            case 3: return CELULAR_4_RAM;
+            default: return "";
+        }
+    }
+    
+    /**
+     * Obtiene el almacenamiento de un celular por índice
+     * @param indice Índice del celular (0-3)
+     * @return Almacenamiento del celular
+     */
+    public static String obtenerAlmacenamiento(int indice) {
+        switch (indice) {
+            case 0: return CELULAR_1_ALMACENAMIENTO;
+            case 1: return CELULAR_2_ALMACENAMIENTO;
+            case 2: return CELULAR_3_ALMACENAMIENTO;
+            case 3: return CELULAR_4_ALMACENAMIENTO;
+            default: return "";
+        }
+    }
+    
+    /**
+     * Actualiza los datos de un celular específico
+     * @param indice Índice del celular (0-3)
+     * @param marca Nueva marca
+     * @param modelo Nuevo modelo
+     * @param precio Nuevo precio
+     * @param ram Nueva RAM (con "GB" incluido)
+     * @param almacenamiento Nuevo almacenamiento (con "GB" incluido)
+     */
+    public static void actualizarCelular(int indice, String marca, String modelo, 
+                                        double precio, String ram, String almacenamiento) {
+        switch (indice) {
+            case 0:
+                CELULAR_1_MARCA = marca;
+                CELULAR_1_MODELO = modelo;
+                CELULAR_1_PRECIO = precio;
+                CELULAR_1_RAM = ram;
+                CELULAR_1_ALMACENAMIENTO = almacenamiento;
+                break;
+            case 1:
+                CELULAR_2_MARCA = marca;
+                CELULAR_2_MODELO = modelo;
+                CELULAR_2_PRECIO = precio;
+                CELULAR_2_RAM = ram;
+                CELULAR_2_ALMACENAMIENTO = almacenamiento;
+                break;
+            case 2:
+                CELULAR_3_MARCA = marca;
+                CELULAR_3_MODELO = modelo;
+                CELULAR_3_PRECIO = precio;
+                CELULAR_3_RAM = ram;
+                CELULAR_3_ALMACENAMIENTO = almacenamiento;
+                break;
+            case 3:
+                CELULAR_4_MARCA = marca;
+                CELULAR_4_MODELO = modelo;
+                CELULAR_4_PRECIO = precio;
+                CELULAR_4_RAM = ram;
+                CELULAR_4_ALMACENAMIENTO = almacenamiento;
+                break;
+        }
     }
 }

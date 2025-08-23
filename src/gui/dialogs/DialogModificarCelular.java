@@ -38,7 +38,12 @@ public class DialogModificarCelular extends JDialog {
         lblSeleccionar.setBounds(30, 30, 120, 25);
         add(lblSeleccionar);
 
-        cboModelo = new JComboBox<>(Constants.CELULARES_MODELOS);
+        cboModelo = new JComboBox<>();
+        // Agregamos los modelos individualmente sin usar arreglos
+        cboModelo.addItem(Constants.obtenerModelo(0));
+        cboModelo.addItem(Constants.obtenerModelo(1));
+        cboModelo.addItem(Constants.obtenerModelo(2));
+        cboModelo.addItem(Constants.obtenerModelo(3));
         cboModelo.setBounds(160, 30, 200, 25);
         add(cboModelo);
 
@@ -124,14 +129,14 @@ public class DialogModificarCelular extends JDialog {
     private void actualizarDatos() {
         indiceActual = cboModelo.getSelectedIndex();
         
-        txtMarca.setText(Constants.CELULARES_MARCAS[indiceActual]);
-        txtModelo.setText(Constants.CELULARES_MODELOS[indiceActual]);
-        txtPrecio.setText(String.valueOf(Constants.CELULARES_PRECIOS[indiceActual]));
+        txtMarca.setText(Constants.obtenerMarca(indiceActual));
+        txtModelo.setText(Constants.obtenerModelo(indiceActual));
+        txtPrecio.setText(String.valueOf(Constants.obtenerPrecio(indiceActual)));
         
-        String ramStr = Constants.CELULARES_RAM[indiceActual];
+        String ramStr = Constants.obtenerRAM(indiceActual);
         txtRAM.setText(ramStr.replace(" GB", ""));
         
-        String almacenamientoStr = Constants.CELULARES_ALMACENAMIENTO[indiceActual];
+        String almacenamientoStr = Constants.obtenerAlmacenamiento(indiceActual);
         txtAlmacenamiento.setText(almacenamientoStr.replace(" GB", ""));
     }
     
@@ -221,51 +226,9 @@ public class DialogModificarCelular extends JDialog {
     }
     
     private void actualizarConstantes(String marca, String modelo, double precio, int ram, int almacenamiento) {
-        switch (indiceActual) {
-            case 0:
-                updateCelular1(marca, modelo, precio, ram, almacenamiento);
-                break;
-            case 1:
-                updateCelular2(marca, modelo, precio, ram, almacenamiento);
-                break;
-            case 2:
-                updateCelular3(marca, modelo, precio, ram, almacenamiento);
-                break;
-            case 3:
-                updateCelular4(marca, modelo, precio, ram, almacenamiento);
-                break;
-        }
-    }
-    
-    private void updateCelular1(String marca, String modelo, double precio, int ram, int almacenamiento) {
-        Constants.CELULARES_MARCAS[0] = marca;
-        Constants.CELULARES_MODELOS[0] = modelo;
-        Constants.CELULARES_PRECIOS[0] = precio;
-        Constants.CELULARES_RAM[0] = ram + " GB";
-        Constants.CELULARES_ALMACENAMIENTO[0] = almacenamiento + " GB";
-    }
-    
-    private void updateCelular2(String marca, String modelo, double precio, int ram, int almacenamiento) {
-        Constants.CELULARES_MARCAS[1] = marca;
-        Constants.CELULARES_MODELOS[1] = modelo;
-        Constants.CELULARES_PRECIOS[1] = precio;
-        Constants.CELULARES_RAM[1] = ram + " GB";
-        Constants.CELULARES_ALMACENAMIENTO[1] = almacenamiento + " GB";
-    }
-    
-    private void updateCelular3(String marca, String modelo, double precio, int ram, int almacenamiento) {
-        Constants.CELULARES_MARCAS[2] = marca;
-        Constants.CELULARES_MODELOS[2] = modelo;
-        Constants.CELULARES_PRECIOS[2] = precio;
-        Constants.CELULARES_RAM[2] = ram + " GB";
-        Constants.CELULARES_ALMACENAMIENTO[2] = almacenamiento + " GB";
-    }
-    
-    private void updateCelular4(String marca, String modelo, double precio, int ram, int almacenamiento) {
-        Constants.CELULARES_MARCAS[3] = marca;
-        Constants.CELULARES_MODELOS[3] = modelo;
-        Constants.CELULARES_PRECIOS[3] = precio;
-        Constants.CELULARES_RAM[3] = ram + " GB";
-        Constants.CELULARES_ALMACENAMIENTO[3] = almacenamiento + " GB";
+        String ramConGB = ram + " GB";
+        String almacenamientoConGB = almacenamiento + " GB";
+        
+        Constants.actualizarCelular(indiceActual, marca, modelo, precio, ramConGB, almacenamientoConGB);
     }
 }

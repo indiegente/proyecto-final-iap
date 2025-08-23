@@ -80,13 +80,13 @@ public class DialogListarProductos extends JDialog {
             "Nº", "MARCA", "MODELO", "PRECIO", "RAM", "ALMACENAMIENTO"));
         reporte.append("───────────────────────────────────────────────────────────────────────────────\n");
         
-        for (int i = 0; i < Constants.CELULARES_MODELOS.length; i++) {
+        for (int i = 0; i < Constants.TOTAL_MODELOS; i++) {
             String numero = String.valueOf(i + 1);
-            String marca = Constants.CELULARES_MARCAS[i];
-            String modelo = Constants.CELULARES_MODELOS[i];
-            String precio = Constants.MONEDA + " " + String.format("%.2f", Constants.CELULARES_PRECIOS[i]);
-            String ram = Constants.CELULARES_RAM[i];
-            String almacenamiento = Constants.CELULARES_ALMACENAMIENTO[i];
+            String marca = Constants.obtenerMarca(i);
+            String modelo = Constants.obtenerModelo(i);
+            String precio = Constants.MONEDA + " " + String.format("%.2f", Constants.obtenerPrecio(i));
+            String ram = Constants.obtenerRAM(i);
+            String almacenamiento = Constants.obtenerAlmacenamiento(i);
             
             reporte.append(String.format("%-4s %-10s %-15s %-12s %-8s %-15s\n",
                 numero, marca, modelo, precio, ram, almacenamiento));
@@ -100,19 +100,22 @@ public class DialogListarProductos extends JDialog {
         reporte.append("• Descuentos disponibles por volumen de compra\n");
         reporte.append("• Obsequios incluidos según cantidad adquirida\n\n");
         
-        double precioMinimo = Constants.CELULARES_PRECIOS[0];
-        double precioMaximo = Constants.CELULARES_PRECIOS[0];
-        String modeloMasBarato = Constants.CELULARES_MODELOS[0];
-        String modeloMasCaro = Constants.CELULARES_MODELOS[0];
+        double precioMinimo = Constants.obtenerPrecio(0);
+        double precioMaximo = Constants.obtenerPrecio(0);
+        String modeloMasBarato = Constants.obtenerModelo(0);
+        String modeloMasCaro = Constants.obtenerModelo(0);
         
-        for (int i = 1; i < Constants.CELULARES_PRECIOS.length; i++) {
-            if (Constants.CELULARES_PRECIOS[i] < precioMinimo) {
-                precioMinimo = Constants.CELULARES_PRECIOS[i];
-                modeloMasBarato = Constants.CELULARES_MODELOS[i];
+        for (int i = 1; i < Constants.TOTAL_MODELOS; i++) {
+            double precioActual = Constants.obtenerPrecio(i);
+            String modeloActual = Constants.obtenerModelo(i);
+            
+            if (precioActual < precioMinimo) {
+                precioMinimo = precioActual;
+                modeloMasBarato = modeloActual;
             }
-            if (Constants.CELULARES_PRECIOS[i] > precioMaximo) {
-                precioMaximo = Constants.CELULARES_PRECIOS[i];
-                modeloMasCaro = Constants.CELULARES_MODELOS[i];
+            if (precioActual > precioMaximo) {
+                precioMaximo = precioActual;
+                modeloMasCaro = modeloActual;
             }
         }
         
@@ -125,7 +128,7 @@ public class DialogListarProductos extends JDialog {
             Constants.MONEDA, (precioMaximo - precioMinimo)));
         
         reporte.append("═══════════════════════════════════════════════════════════════════════════════\n");
-        reporte.append("Total de modelos disponibles: " + Constants.CELULARES_MODELOS.length + "\n");
+        reporte.append("Total de modelos disponibles: " + Constants.TOTAL_MODELOS + "\n");
         reporte.append("Fecha de generación: " + java.time.LocalDateTime.now().format(
             java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + "\n");
         reporte.append("═══════════════════════════════════════════════════════════════════════════════");
