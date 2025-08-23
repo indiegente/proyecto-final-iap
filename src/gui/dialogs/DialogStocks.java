@@ -1,14 +1,14 @@
 package gui.dialogs;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
-import java.awt.Font;
 import utils.Constants;
 import utils.Validator;
 
 public class DialogStocks extends JDialog {
     public static final int ANCHO = 400;
-    public static final int ALTO = 280;
+    public static final int ALTO = 300;
     
     private JTextField txtModelo1;
     private JTextField txtModelo2;
@@ -21,87 +21,103 @@ public class DialogStocks extends JDialog {
         super(parent, "Configurar stocks", true);
         setTitle("Configurar stocks");
         getContentPane().setLayout(null);
+        getContentPane().setBackground(new Color(245, 245, 245)); // Fondo suave gris claro
         
         initComponents();
         setupEventListeners();
         cargarValoresActuales();
         
-        setSize(400, 303);
+        setSize(ANCHO, ALTO);
         setLocationRelativeTo(parent);
         setResizable(false);
     }
     
     private void initComponents() {
-        JLabel lblModelo1 = new JLabel("Redmi A3");
-        lblModelo1.setBounds(30, 48, 120, 25);
-        lblModelo1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        JLabel lblXiaomi = new JLabel("📦 Configuración de Stocks Xiaomi");
+        lblXiaomi.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblXiaomi.setForeground(new Color(255, 87, 34)); // Naranja Xiaomi
+        lblXiaomi.setBounds(50, 10, 300, 25);
+        getContentPane().add(lblXiaomi);
+
+        JLabel lblModelo1 = new JLabel("Redmi A3:");
+        lblModelo1.setBounds(30, 50, 120, 25);
+        lblModelo1.setFont(new Font("Tahoma", Font.PLAIN, 13));
         getContentPane().add(lblModelo1);
 
-        txtModelo1 = new JTextField();
-        txtModelo1.setBounds(200, 48, 80, 25);
-        txtModelo1.setHorizontalAlignment(JTextField.RIGHT);
+        txtModelo1 = crearCampoTexto(200, 50);
         getContentPane().add(txtModelo1);
-        
-        JLabel lblPorciento1 = new JLabel("unidades");
-        lblPorciento1.setBounds(290, 48, 96, 25);
+
+        JLabel lblPorciento1 = crearLabelUnidades(290, 50);
         getContentPane().add(lblPorciento1);
 
-        JLabel lblModelo2 = new JLabel("Redmi 12C ");
-        lblModelo2.setBounds(30, 88, 120, 25);
-        lblModelo2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        JLabel lblModelo2 = new JLabel("Redmi 12C:");
+        lblModelo2.setBounds(30, 90, 120, 25);
+        lblModelo2.setFont(new Font("Tahoma", Font.PLAIN, 13));
         getContentPane().add(lblModelo2);
 
-        txtModelo2 = new JTextField();
-        txtModelo2.setBounds(200, 88, 80, 25);
-        txtModelo2.setHorizontalAlignment(JTextField.RIGHT);
+        txtModelo2 = crearCampoTexto(200, 90);
         getContentPane().add(txtModelo2);
 
-        JLabel lblModelo3 = new JLabel("Redmi Note 12");
-        lblModelo3.setBounds(30, 128, 120, 25);
-        lblModelo3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        JLabel lblPorciento2 = crearLabelUnidades(290, 90);
+        getContentPane().add(lblPorciento2);
+
+        JLabel lblModelo3 = new JLabel("Redmi Note 12:");
+        lblModelo3.setBounds(30, 130, 120, 25);
+        lblModelo3.setFont(new Font("Tahoma", Font.PLAIN, 13));
         getContentPane().add(lblModelo3);
 
-        txtModelo3 = new JTextField();
-        txtModelo3.setBounds(200, 128, 80, 25);
-        txtModelo3.setHorizontalAlignment(JTextField.RIGHT);
+        txtModelo3 = crearCampoTexto(200, 130);
         getContentPane().add(txtModelo3);
 
-        JLabel lblModelo4 = new JLabel("Redmi Note 13");
-        lblModelo4.setBounds(30, 168, 120, 25);
-        lblModelo4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        JLabel lblPorciento3 = crearLabelUnidades(290, 130);
+        getContentPane().add(lblPorciento3);
+
+        JLabel lblModelo4 = new JLabel("Redmi Note 13:");
+        lblModelo4.setBounds(30, 170, 120, 25);
+        lblModelo4.setFont(new Font("Tahoma", Font.PLAIN, 13));
         getContentPane().add(lblModelo4);
 
-        txtModelo4 = new JTextField();
-        txtModelo4.setBounds(200, 168, 80, 25);
-        txtModelo4.setHorizontalAlignment(JTextField.RIGHT);
+        txtModelo4 = crearCampoTexto(200, 170);
         getContentPane().add(txtModelo4);
 
+        JLabel lblPorciento4 = crearLabelUnidades(290, 170);
+        getContentPane().add(lblPorciento4);
+
         btnAceptar = new JButton("Aceptar");
-        btnAceptar.setBounds(80, 218, 100, 30);
-        btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        btnAceptar.setBounds(80, 220, 100, 35);
+        btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnAceptar.setBackground(new Color(76, 175, 80)); // Verde
+        btnAceptar.setForeground(Color.WHITE);
+        btnAceptar.setFocusPainted(false);
         getContentPane().add(btnAceptar);
 
         btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(200, 218, 100, 30);
-        btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        btnCancelar.setBounds(200, 220, 100, 35);
+        btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnCancelar.setBackground(new Color(244, 67, 54)); // Rojo
+        btnCancelar.setForeground(Color.WHITE);
+        btnCancelar.setFocusPainted(false);
         getContentPane().add(btnCancelar);
-        
-        JLabel lblXiaomi = new JLabel("Xiaomi");
-        lblXiaomi.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblXiaomi.setBounds(30, 11, 120, 25);
-        getContentPane().add(lblXiaomi);
-        
-        JLabel lblPorciento1_1 = new JLabel("unidades");
-        lblPorciento1_1.setBounds(290, 88, 96, 25);
-        getContentPane().add(lblPorciento1_1);
-        
-        JLabel lblPorciento1_1_1 = new JLabel("unidades");
-        lblPorciento1_1_1.setBounds(290, 128, 96, 25);
-        getContentPane().add(lblPorciento1_1_1);
-        
-        JLabel lblPorciento1_1_2 = new JLabel("unidades");
-        lblPorciento1_1_2.setBounds(290, 168, 96, 25);
-        getContentPane().add(lblPorciento1_1_2);
+    }
+
+    // Método para crear campos de texto con estilo uniforme
+    private JTextField crearCampoTexto(int x, int y) {
+        JTextField txt = new JTextField();
+        txt.setBounds(x, y, 80, 25);
+        txt.setHorizontalAlignment(JTextField.RIGHT);
+        txt.setFont(new Font("Courier New", Font.PLAIN, 13));
+        txt.setBackground(new Color(255, 255, 255));
+        txt.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
+        return txt;
+    }
+
+    // Método para etiquetas "unidades"
+    private JLabel crearLabelUnidades(int x, int y) {
+        JLabel lbl = new JLabel("unidades");
+        lbl.setBounds(x, y, 80, 25);
+        lbl.setFont(new Font("Tahoma", Font.ITALIC, 12));
+        lbl.setForeground(new Color(100, 100, 100));
+        return lbl;
     }
     
     private void setupEventListeners() {
@@ -136,7 +152,6 @@ public class DialogStocks extends JDialog {
             int stock3 = Integer.parseInt(txtModelo3.getText());
             int stock4 = Integer.parseInt(txtModelo4.getText());
             
-            
             if (!validarStocks(stock1, stock2, stock3, stock4)) {
                 return;
             }
@@ -144,7 +159,7 @@ public class DialogStocks extends JDialog {
             actualizarStocks(stock1, stock2, stock3, stock4);
             
             JOptionPane.showMessageDialog(this, 
-                "Los stocks se han sido actualizados exitosamente.", 
+                "✅ Los stocks han sido actualizados exitosamente.", 
                 "Configuración Guardada", 
                 JOptionPane.INFORMATION_MESSAGE);
             
@@ -152,7 +167,7 @@ public class DialogStocks extends JDialog {
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, 
-                "Error: Todos los campos deben contener valores numéricos válidos.", 
+                "❌ Error: Todos los campos deben contener valores numéricos válidos.", 
                 "Error de Formato", 
                 JOptionPane.ERROR_MESSAGE);
         }
@@ -192,18 +207,7 @@ public class DialogStocks extends JDialog {
         Validator.validarStock(s2);
         Validator.validarStock(s3);
         Validator.validarStock(s4);
-        
-        
-        
         return true;
-    }
-    
-    private void mostrarErrorRango(String campo, double min, double max) {
-        JOptionPane.showMessageDialog(this, 
-            String.format("El porcentaje para '%s' debe estar entre %.1f%% y %.1f%%", 
-                campo, min, max), 
-            "Error de Validación", 
-            JOptionPane.ERROR_MESSAGE);
     }
     
     private void actualizarStocks(int s1, int s2, int s3, int s4) {

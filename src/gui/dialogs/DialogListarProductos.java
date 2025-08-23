@@ -2,7 +2,7 @@ package gui.dialogs;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.awt.Font;
+import java.awt.*;
 import utils.Constants;
 
 public class DialogListarProductos extends JDialog {
@@ -14,9 +14,15 @@ public class DialogListarProductos extends JDialog {
     private JButton btnListar;
     private JButton btnCerrar;
 
+    // Colores Xiaomi
+    private final Color COLOR_PRIMARIO = new Color(255, 87, 34);   // Naranja fuerte
+    private final Color COLOR_SECUNDARIO = new Color(33, 33, 33);  // Gris oscuro
+    private final Color COLOR_FONDO = Color.WHITE;
+
     public DialogListarProductos(JFrame parent) {
         super(parent, "Listar Celulares", true);
         setLayout(null);
+        getContentPane().setBackground(COLOR_FONDO);
         
         initComponents();
         setupEventListeners();
@@ -27,14 +33,18 @@ public class DialogListarProductos extends JDialog {
     }
     
     private void initComponents() {
-        JLabel lblTitulo = new JLabel("CATÁLOGO DE CELULARES XIAOMI - GAMA MEDIA-BAJA");
-        lblTitulo.setBounds(30, 20, 600, 25);
-        lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 14));
+        JLabel lblTitulo = new JLabel("CATÁLOGO DE CELULARES XIAOMI - GAMA MEDIA-BAJA", SwingConstants.CENTER);
+        lblTitulo.setBounds(30, 20, 620, 30);
+        lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
+        lblTitulo.setForeground(COLOR_PRIMARIO);
         add(lblTitulo);
         
         areaReporte = new JTextArea();
         areaReporte.setEditable(false);
         areaReporte.setFont(new Font("Courier New", Font.PLAIN, 12));
+        areaReporte.setForeground(COLOR_SECUNDARIO);
+        areaReporte.setBackground(new Color(250, 250, 250));
+        areaReporte.setBorder(BorderFactory.createLineBorder(COLOR_PRIMARIO, 1));
         areaReporte.setText("Presione el botón 'Listar' para generar el catálogo completo de celulares.");
         
         scrollPane = new JScrollPane(areaReporte);
@@ -46,11 +56,19 @@ public class DialogListarProductos extends JDialog {
         btnListar = new JButton("Listar");
         btnListar.setBounds(200, 360, 120, 35);
         btnListar.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnListar.setBackground(COLOR_PRIMARIO);
+        btnListar.setForeground(Color.WHITE);
+        btnListar.setFocusPainted(false);
+        btnListar.setBorderPainted(false);
         add(btnListar);
         
         btnCerrar = new JButton("Cerrar");
         btnCerrar.setBounds(350, 360, 120, 35);
         btnCerrar.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnCerrar.setBackground(COLOR_SECUNDARIO);
+        btnCerrar.setForeground(Color.WHITE);
+        btnCerrar.setFocusPainted(false);
+        btnCerrar.setBorderPainted(false);
         add(btnCerrar);
     }
     
@@ -64,6 +82,25 @@ public class DialogListarProductos extends JDialog {
         btnCerrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+
+        // Hover effect para botones
+        btnListar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnListar.setBackground(COLOR_SECUNDARIO);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnListar.setBackground(COLOR_PRIMARIO);
+            }
+        });
+
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrar.setBackground(COLOR_PRIMARIO);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrar.setBackground(COLOR_SECUNDARIO);
             }
         });
     }

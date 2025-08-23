@@ -2,7 +2,7 @@ package gui.dialogs;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.awt.Font;
+import java.awt.*;
 import java.text.DecimalFormat;
 import utils.Constants;
 import utils.Validator;
@@ -29,6 +29,7 @@ public class DialogNuevaVenta extends JDialog {
     public DialogNuevaVenta(JFrame parent) {
         super(parent, "Vender", true);
         getContentPane().setLayout(null);
+        getContentPane().setBackground(Color.WHITE); // Fondo blanco
         
         initComponents();
         setupEventListeners();
@@ -39,51 +40,88 @@ public class DialogNuevaVenta extends JDialog {
     }
     
     private void initComponents() {
-        JLabel lblModelo = new JLabel("Modelo");
-        lblModelo.setBounds(30, 30, 80, 25);
+        // === Título decorativo ===
+        JLabel lblTitulo = new JLabel("NUEVA VENTA - XIAOMI");
+        lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
+        lblTitulo.setForeground(new Color(255, 87, 34)); // Naranja Xiaomi
+        lblTitulo.setBounds(30, 5, 300, 25);
+        getContentPane().add(lblTitulo);
+
+        JLabel lblModelo = new JLabel("Modelo:");
+        lblModelo.setBounds(30, 40, 80, 25);
+        lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 12));
         getContentPane().add(lblModelo);
 
         cboModelo = new JComboBox<>();
-        // Agregamos los modelos individualmente sin usar arreglos
         cboModelo.addItem(Constants.obtenerModelo(0));
         cboModelo.addItem(Constants.obtenerModelo(1));
         cboModelo.addItem(Constants.obtenerModelo(2));
         cboModelo.addItem(Constants.obtenerModelo(3));
-        cboModelo.setBounds(120, 30, 200, 25);
+        cboModelo.setBounds(120, 40, 200, 25);
+        cboModelo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        cboModelo.setBackground(Color.WHITE);
         getContentPane().add(cboModelo);
 
-        JLabel lblPrecio = new JLabel("Precio(S/)");
-        lblPrecio.setBounds(30, 70, 80, 25);
+        JLabel lblPrecio = new JLabel("Precio (S/):");
+        lblPrecio.setBounds(30, 80, 80, 25);
+        lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 12));
         getContentPane().add(lblPrecio);
 
         txtPrecio = new JTextField();
-        txtPrecio.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        txtPrecio.setBounds(120, 70, 200, 25);
+        txtPrecio.setBounds(120, 80, 200, 25);
         txtPrecio.setEditable(false);
+        txtPrecio.setFont(new Font("Tahoma", Font.BOLD, 12));
+        txtPrecio.setForeground(new Color(0, 102, 0)); // Verde oscuro
+        txtPrecio.setBackground(new Color(245, 245, 245)); // Gris claro
         getContentPane().add(txtPrecio);
 
-        JLabel lblCantidad = new JLabel("Cantidad");
-        lblCantidad.setBounds(30, 110, 80, 25);
+        JLabel lblCantidad = new JLabel("Cantidad:");
+        lblCantidad.setBounds(30, 120, 80, 25);
+        lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 12));
         getContentPane().add(lblCantidad);
 
         txtCantidad = new JTextField();
-        txtCantidad.setBounds(120, 110, 68, 25);
+        txtCantidad.setBounds(120, 120, 68, 25);
+        txtCantidad.setHorizontalAlignment(JTextField.CENTER);
+        txtCantidad.setFont(new Font("Tahoma", Font.PLAIN, 12));
         getContentPane().add(txtCantidad);
 
+        JLabel lblStock = new JLabel("Stock:");
+        lblStock.setBounds(198, 120, 50, 25);
+        lblStock.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        getContentPane().add(lblStock);
+        
+        txtStock = new JTextField();
+        txtStock.setBounds(245, 120, 75, 25);
+        txtStock.setEditable(false);
+        txtStock.setHorizontalAlignment(JTextField.CENTER);
+        txtStock.setFont(new Font("Tahoma", Font.BOLD, 12));
+        txtStock.setBackground(new Color(245, 245, 245));
+        txtStock.setForeground(Color.DARK_GRAY);
+        getContentPane().add(txtStock);
+
+        // === Botones ===
         btnVender = new JButton("Vender");
-        btnVender.setBounds(350, 30, 80, 30);
+        btnVender.setBounds(350, 40, 120, 35);
+        btnVender.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnVender.setBackground(new Color(255, 87, 34)); // Naranja Xiaomi
+        btnVender.setForeground(Color.WHITE);
+        btnVender.setFocusPainted(false);
         getContentPane().add(btnVender);
 
         btnCerrar = new JButton("Cerrar");
-        btnCerrar.setBounds(350, 70, 80, 30);
+        btnCerrar.setBounds(350, 85, 120, 35);
+        btnCerrar.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnCerrar.setBackground(Color.DARK_GRAY);
+        btnCerrar.setForeground(Color.WHITE);
+        btnCerrar.setFocusPainted(false);
         getContentPane().add(btnCerrar);
 
+        // === Boleta ===
         JLabel lblBoleta = new JLabel("BOLETA DE VENTA");
-        lblBoleta.setBounds(30, 150, 150, 25);
-        lblBoleta.setFont(new Font("Tahoma", Font.BOLD, 12));
+        lblBoleta.setBounds(30, 160, 200, 25);
+        lblBoleta.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lblBoleta.setForeground(new Color(255, 87, 34));
         getContentPane().add(lblBoleta);
 
         areaBoleta = new JTextArea();
@@ -92,17 +130,9 @@ public class DialogNuevaVenta extends JDialog {
         areaBoleta.setText("Seleccione un modelo y cantidad para generar la boleta");
         
         scrollBoleta = new JScrollPane(areaBoleta);
-        scrollBoleta.setBounds(30, 180, 480, 250);
+        scrollBoleta.setBounds(30, 190, 480, 250);
         scrollBoleta.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         getContentPane().add(scrollBoleta);
-        
-        JLabel lblStock = new JLabel("Stock:");
-        lblStock.setBounds(198, 110, 80, 25);
-        getContentPane().add(lblStock);
-        
-        txtStock = new JTextField();
-        txtStock.setBounds(245, 112, 75, 25);
-        getContentPane().add(txtStock);
         
         actualizarPrecio();
     }
@@ -147,21 +177,11 @@ public class DialogNuevaVenta extends JDialog {
         txtStock.setText(String.valueOf(stock));
         
         switch (indiceModelo) {
-        case 0: 
-        	Constants.CELULAR_1_STOCK=stock;
-        break;
-        case 1: 
-        	Constants.CELULAR_2_STOCK=stock;
-        break;
-        case 2: 
-        	Constants.CELULAR_3_STOCK=stock;
-        break;
-        case 3: 
-        	Constants.CELULAR_4_STOCK=stock;
-        break;
+            case 0: Constants.CELULAR_1_STOCK=stock; break;
+            case 1: Constants.CELULAR_2_STOCK=stock; break;
+            case 2: Constants.CELULAR_3_STOCK=stock; break;
+            case 3: Constants.CELULAR_4_STOCK=stock; break;
         }
-        
-        
         
         String modelo = Constants.obtenerModelo(indiceModelo);
         double precioUnitario = Constants.obtenerPrecio(indiceModelo);
@@ -199,7 +219,6 @@ public class DialogNuevaVenta extends JDialog {
 
         int stock = Integer.parseInt(txtStock.getText().trim());
 
-        //Validación extra: stock insuficiente
         if (cantidad > stock) {
             JOptionPane.showMessageDialog(
                 this,
@@ -213,7 +232,6 @@ public class DialogNuevaVenta extends JDialog {
         return true;
     }
 
-    
     private void generarBoleta(String modelo, double precioUnitario, int cantidad,
                               double importeCompra, double porcentajeDescuento,
                               double importeDescuento, double importeAPagar, String obsequio) {
