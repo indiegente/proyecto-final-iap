@@ -14,29 +14,29 @@ public class Constants {
     // ========================================
     
     /** Descuento para 1 a 5 unidades (por defecto 7.5%) */
-    public static final double DESCUENTO_1_A_5 = 7.5;
+    public static double DESCUENTO_1_A_5 = 7.5;
     
     /** Descuento para 6 a 10 unidades (por defecto 10%) */
-    public static final double DESCUENTO_6_A_10 = 10.0;
+    public static double DESCUENTO_6_A_10 = 10.0;
     
     /** Descuento para 11 a 15 unidades (por defecto 12.5%) */
-    public static final double DESCUENTO_11_A_15 = 12.5;
+    public static double DESCUENTO_11_A_15 = 12.5;
     
     /** Descuento para más de 15 unidades (por defecto 15%) */
-    public static final double DESCUENTO_MAS_15 = 15.0;
+    public static double DESCUENTO_MAS_15 = 15.0;
     
     // ========================================
     // CONSTANTES DE OBSEQUIOS
     // ========================================
     
     /** Obsequio para 1 unidad (por defecto: Funda) */
-    public static final String OBSEQUIO_1_UNIDAD = "Funda";
+    public static String OBSEQUIO_1_UNIDAD = "Funda";
     
     /** Obsequio para 2 a 5 unidades (por defecto: Protector de pantalla) */
-    public static final String OBSEQUIO_2_A_5 = "Protector de pantalla";
+    public static String OBSEQUIO_2_A_5 = "Protector de pantalla";
     
     /** Obsequio para 6 o más unidades (por defecto: Audífonos) */
-    public static final String OBSEQUIO_6_MAS = "Audífonos";
+    public static String OBSEQUIO_6_MAS = "Audífonos";
     
     // ========================================
     // CONSTANTES DE VALIDACIÓN
@@ -254,5 +254,40 @@ public class Constants {
      */
     public static boolean esCantidadValida(int cantidad) {
         return cantidad >= CANTIDAD_MINIMA && cantidad <= CANTIDAD_MAXIMA;
+    }
+    
+    // ========================================
+    // MÉTODOS PARA CONFIGURACIÓN DE DESCUENTOS
+    // ========================================
+    
+    /**
+     * Actualiza los porcentajes de descuento por volumen
+     * @param descuento1a5 Descuento para 1 a 5 unidades
+     * @param descuento6a10 Descuento para 6 a 10 unidades
+     * @param descuento11a15 Descuento para 11 a 15 unidades
+     * @param descuentoMas15 Descuento para más de 15 unidades
+     */
+    public static void actualizarDescuentos(double descuento1a5, double descuento6a10, 
+                                          double descuento11a15, double descuentoMas15) {
+        DESCUENTO_1_A_5 = descuento1a5;
+        DESCUENTO_6_A_10 = descuento6a10;
+        DESCUENTO_11_A_15 = descuento11a15;
+        DESCUENTO_MAS_15 = descuentoMas15;
+    }
+    
+    // ========================================
+    // MÉTODOS PARA CONFIGURACIÓN DE OBSEQUIOS
+    // ========================================
+    
+    /**
+     * Actualiza los obsequios por cantidad
+     * @param obsequio1 Obsequio para 1 unidad
+     * @param obsequio2a5 Obsequio para 2 a 5 unidades
+     * @param obsequio6Mas Obsequio para 6 o más unidades
+     */
+    public static void actualizarObsequios(String obsequio1, String obsequio2a5, String obsequio6Mas) {
+        OBSEQUIO_1_UNIDAD = obsequio1;
+        OBSEQUIO_2_A_5 = obsequio2a5;
+        OBSEQUIO_6_MAS = obsequio6Mas;
     }
 }
