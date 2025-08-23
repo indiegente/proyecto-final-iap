@@ -184,12 +184,9 @@ public class Constants {
     // ========================================
     
     /** Autores del proyecto */
-    public static final String[] AUTORES = {
-        "Alfredo Condori",
-        "Ever García", 
-        "Fiorela Quispe",
-        "Jorge Bastidas"
-    };
+    public static final String AUTOR_1 = "Jorge Enrique Bastidas Ureta";
+    public static final String AUTOR_2 = "Fiorela Clariza Quispe Quispe";
+    public static final String AUTOR_3 = "Ever García";
     
     /** Versión del sistema */
     public static final String VERSION = "1.0";
