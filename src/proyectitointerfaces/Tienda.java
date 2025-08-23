@@ -3,8 +3,6 @@ package proyectitointerfaces;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -25,9 +23,6 @@ import gui.dialogs.DialogAcercaDe;
  */
 public class Tienda extends JFrame {
 
-    // Variables globales (campos de clase)
-    private JPanel contentPane;
-    private JTabbedPane tabbedPane;
 
     // Constantes simples
     public static final int ANCHO_VENTANA = 800;
@@ -54,15 +49,6 @@ public class Tienda extends JFrame {
         // Crear y configurar la barra de menú
         crearMenu();
 
-        // Panel principal
-        contentPane = new JPanel();
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-
-        // Panel de pestañas principal
-        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 10, ANCHO_VENTANA - 40, ALTO_VENTANA - 80);
-        contentPane.add(tabbedPane);
 
     }
 

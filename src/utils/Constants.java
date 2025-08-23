@@ -54,43 +54,7 @@ public class Constants {
     /** Cantidad mínima de unidades por venta */
     public static final int CANTIDAD_MINIMA = 1;
     
-    // ========================================
-    // CONSTANTES DE INTERFAZ
-    // ========================================
     
-    /** Título principal de la aplicación */
-    public static final String TITULO_APLICACION = "TIENDA DISTRIBUIDORA XIAOMI";
-    
-    /** Ancho de la ventana principal */
-    public static final int ANCHO_VENTANA = 800;
-    
-    /** Alto de la ventana principal */
-    public static final int ALTO_VENTANA = 600;
-    
-    /** Fuente principal del sistema */
-    public static final String FUENTE_PRINCIPAL = "Tahoma";
-    
-    /** Tamaño de fuente normal */
-    public static final int TAMANO_FUENTE_NORMAL = 13;
-    
-    /** Tamaño de fuente título */
-    public static final int TAMANO_FUENTE_TITULO = 18;
-    
-    // ========================================
-    // CONSTANTES DE ARCHIVOS
-    // ========================================
-    
-    /** Archivo de productos */
-    public static final String ARCHIVO_PRODUCTOS = "productos.dat";
-    
-    /** Archivo de ventas */
-    public static final String ARCHIVO_VENTAS = "ventas.dat";
-    
-    /** Archivo de configuración */
-    public static final String ARCHIVO_CONFIG = "configuracion.dat";
-    
-    /** Directorio de datos */
-    public static final String DIRECTORIO_DATOS = "data/";
     
     // ========================================
     // CONSTANTES DE MENSAJES
@@ -107,11 +71,6 @@ public class Constants {
     /** Mensaje de éxito al guardar */
     public static final String EXITO_GUARDAR = "Datos guardados exitosamente";
     
-    /** Mensaje de error al guardar */
-    public static final String ERROR_GUARDAR = "Error al guardar los datos";
-    
-    /** Mensaje de confirmación de salida */
-    public static final String CONFIRMAR_SALIDA = "¿Está seguro que desea salir del sistema?";
     
     // ========================================
     // CONSTANTES DE VENTAS
@@ -174,14 +133,6 @@ public class Constants {
     public static final String AUTOR_2 = "Fiorela Clariza Quispe Quispe";
     public static final String AUTOR_3 = "Ever García";
     
-    /** Versión del sistema */
-    public static final String VERSION = "1.0";
-    
-    /** Institución educativa */
-    public static final String INSTITUCION = "Cibertec";
-    
-    /** Curso */
-    public static final String CURSO = "Introducción a la Algoritmia";
     
     // ========================================
     // MÉTODOS UTILITARIOS

@@ -62,77 +62,9 @@ public class Validator {
         return -1;
     }
     
-    /**
-     * Valida que la pantalla no esté vacía
-     * @param pantalla Pantalla a validar
-     * @return true si es válida, false en caso contrario
-     */
-    public static boolean validarPantalla(String pantalla) {
-        if (pantalla == null || pantalla.trim().isEmpty()) {
-            mostrarError("La pantalla no puede estar vacía");
-            return false;
-        }
-        return true;
-    }
     
-    /**
-     * Valida que la RAM sea un número válido
-     * @param ramStr RAM como string
-     * @return La RAM como int si es válida, -1 si no lo es
-     */
-    public static int validarRam(String ramStr) {
-        try {
-            int ram = Integer.parseInt(ramStr);
-            if (ram <= 0) {
-                mostrarError("La RAM debe ser mayor a 0");
-                return -1;
-            }
-            if (ram > 32) {
-                mostrarError("La RAM no puede ser mayor a 32 GB");
-                return -1;
-            }
-            return ram;
-        } catch (NumberFormatException e) {
-            mostrarError("La RAM debe ser un número entero válido");
-            return -1;
-        }
-    }
     
-    /**
-     * Valida que la ROM sea un número válido
-     * @param romStr ROM como string
-     * @return La ROM como int si es válida, -1 si no lo es
-     */
-    public static int validarRom(String romStr) {
-        try {
-            int rom = Integer.parseInt(romStr);
-            if (rom <= 0) {
-                mostrarError("La ROM debe ser mayor a 0");
-                return -1;
-            }
-            if (rom > 1024) {
-                mostrarError("La ROM no puede ser mayor a 1024 GB");
-                return -1;
-            }
-            return rom;
-        } catch (NumberFormatException e) {
-            mostrarError("La ROM debe ser un número entero válido");
-            return -1;
-        }
-    }
     
-    /**
-     * Valida que la carga rápida no esté vacía
-     * @param carga Carga rápida a validar
-     * @return true si es válida, false en caso contrario
-     */
-    public static boolean validarCargaRapida(String carga) {
-        if (carga == null || carga.trim().isEmpty()) {
-            mostrarError("La carga rápida no puede estar vacía");
-            return false;
-        }
-        return true;
-    }
     
     // ========================================
     // VALIDACIONES DE VENTAS
@@ -168,18 +100,6 @@ public class Validator {
         return -1;
     }
     
-    /**
-     * Valida que se haya seleccionado un producto
-     * @param productoSeleccionado Producto seleccionado
-     * @return true si es válido, false en caso contrario
-     */
-    public static boolean validarProductoSeleccionado(String productoSeleccionado) {
-        if (productoSeleccionado == null || productoSeleccionado.trim().isEmpty()) {
-            mostrarError("Debe seleccionar un producto");
-            return false;
-        }
-        return true;
-    }
     
     // ========================================
     // VALIDACIONES DE CONFIGURACIÓN
@@ -235,33 +155,7 @@ public class Validator {
         return true;
     }
     
-    /**
-     * Valida que un número sea positivo
-     * @param numero Número a validar
-     * @param nombreCampo Nombre del campo para el mensaje de error
-     * @return true si es válido, false en caso contrario
-     */
-    public static boolean validarNumeroPositivo(double numero, String nombreCampo) {
-        if (numero <= 0) {
-            mostrarError("El campo '" + nombreCampo + "' debe ser mayor a 0");
-            return false;
-        }
-        return true;
-    }
     
-    /**
-     * Valida que un número entero sea positivo
-     * @param numero Número a validar
-     * @param nombreCampo Nombre del campo para el mensaje de error
-     * @return true si es válido, false en caso contrario
-     */
-    public static boolean validarNumeroEnteroPositivo(int numero, String nombreCampo) {
-        if (numero <= 0) {
-            mostrarError("El campo '" + nombreCampo + "' debe ser mayor a 0");
-            return false;
-        }
-        return true;
-    }
     
     // ========================================
     // MÉTODOS DE UTILIDAD
@@ -280,70 +174,8 @@ public class Validator {
         );
     }
     
-    /**
-     * Muestra un mensaje de información
-     * @param mensaje Mensaje a mostrar
-     */
-    public static void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(
-            null, 
-            mensaje, 
-            "Información", 
-            JOptionPane.INFORMATION_MESSAGE
-        );
-    }
     
-    /**
-     * Muestra un mensaje de confirmación
-     * @param mensaje Mensaje a mostrar
-     * @return true si el usuario confirma, false en caso contrario
-     */
-    public static boolean mostrarConfirmacion(String mensaje) {
-        int respuesta = JOptionPane.showConfirmDialog(
-            null, 
-            mensaje, 
-            "Confirmación", 
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE
-        );
-        return respuesta == JOptionPane.YES_OPTION;
-    }
     
-    /**
-     * Limpia un string eliminando espacios en blanco
-     * @param texto Texto a limpiar
-     * @return Texto limpio
-     */
-    public static String limpiarTexto(String texto) {
-        if (texto == null) {
-            return "";
-        }
-        return texto.trim();
-    }
     
-    /**
-     * Convierte un string a double de forma segura
-     * @param texto Texto a convertir
-     * @return El número como double, 0.0 si no es válido
-     */
-    public static double stringToDouble(String texto) {
-        try {
-            return Double.parseDouble(texto.trim());
-        } catch (NumberFormatException e) {
-            return 0.0;
-        }
-    }
     
-    /**
-     * Convierte un string a int de forma segura
-     * @param texto Texto a convertir
-     * @return El número como int, 0 si no es válido
-     */
-    public static int stringToInt(String texto) {
-        try {
-            return Integer.parseInt(texto.trim());
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
 }
