@@ -1,7 +1,6 @@
 package proyectitointerfaces;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 import gui.dialogs.DialogConsultarProducto;
@@ -26,6 +25,15 @@ public class Tienda extends JFrame {
     }
 
     public Tienda() {
+        // Configuración específica para macOS
+        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            try {
+                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            } catch (Exception e) {
+                // Si falla, continuar
+            }
+        }
+        
         setTitle("Sistema de Tienda Xiaomi");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setBounds(100, 100, ANCHO_VENTANA, ALTO_VENTANA);
@@ -114,6 +122,7 @@ public class Tienda extends JFrame {
         JMenu menu = new JMenu(texto);
         menu.setFont(fuente);
         menu.setForeground(fg);
+
         menu.getPopupMenu().setBackground(bg);
         menu.getPopupMenu().setForeground(fg);
         return menu;
@@ -124,6 +133,11 @@ public class Tienda extends JFrame {
         item.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         item.setForeground(fg);
         item.setBackground(bg);
+        // Configuración específica para macOS
+        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            item.setBorderPainted(false);
+            item.setFocusPainted(false);
+        }
         return item;
     }
 }
